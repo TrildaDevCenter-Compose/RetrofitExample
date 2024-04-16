@@ -7,14 +7,14 @@ plugins {
 
 android {
     namespace =  "com.lj.app"
-    compileSdk=  33
+    compileSdk=  34
 
     defaultConfig {
         applicationId = "com.lj.retrofitexample"
-        minSdk= 31
-        targetSdk =33
-        versionCode =1
-        versionName ="1.0"
+        minSdk = 31
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -47,46 +47,61 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_19.toString()
     }
 
     buildFeatures {
         compose  = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
-    packagingOptions{
+    packagingOptions.resources{
         // The Rome library JARs embed some internal utils libraries in nested JARs.
         // We don't need them so we exclude them in the final package.
         //excludes += "/*.jar"
 
         // Multiple dependency bring these files in. Exclude them to enable
         // our test APK to build (has no effect on our AARs)
-        resources.excludes.add ( "/META-INF/AL2.0")
-        resources.excludes.add ("/META-INF/LGPL2.1")
+        excludes.add ("/META-INF/AL2.0")
+        excludes.add ("/META-INF/LGPL2.1")
     }
 }
 
 dependencies {
+
+    // work manager (workers)
+    val workVersion = "2.9.0"
+
+    // this solves on recent Android  the crash signaled in Logcat with
+    // Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified
+    // when creating a PendingIntent. Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE
+    // if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used
+    // with inline replies or bubbles.
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
+
+    androidTestImplementation("androidx.work:work-testing:$workVersion")
+    implementation ("androidx.work:work-multiprocess:$workVersion")
+
     implementation (project(":data"))
     implementation (project(":domain"))
 
-    implementation ("androidx.core:core-ktx::1.12.0")
+    implementation ("androidx.core:core-ktx:1.12.0")
     implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation( "androidx.activity:activity-compose:1.8.2")
 
 
-    implementation(platform("androidx.compose:compose-bom:2024.03.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.00"))
 
-    implementation( "androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation( "androidx.compose.material:material")
+    implementation("androidx.compose.material:material")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
@@ -109,6 +124,6 @@ dependencies {
 
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
     // define any required OkHttp artifacts without version
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }

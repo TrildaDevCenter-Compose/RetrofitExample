@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace = "com.lj.libraryexample"
-    compileSdk=  33
+    compileSdk=  34
 
     defaultConfig {
         minSdk= 31
-        targetSdk = 33
+        targetSdk = 34
     }
 
     buildTypes {
@@ -32,24 +32,26 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }}
+        jvmTarget = JavaVersion.VERSION_19.toString()
+    }
+}
 
 dependencies {
-    implementation ("androidx.core:core-ktx::1.12.0")
+    implementation ("androidx.core:core-ktx:1.12.0")
     implementation ("androidx.appcompat:appcompat:1.6.1")
 
-    implementation(platform("androidx.compose:compose-bom:2024.03.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.00"))
 
     implementation( "androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation( "androidx.compose.material:material")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation(project(":domain"))
 
     // Hilt dependencies
     val hiltVersion = "2.51.1"
@@ -65,6 +67,6 @@ dependencies {
 
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
     // define any required OkHttp artifacts without version
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }
