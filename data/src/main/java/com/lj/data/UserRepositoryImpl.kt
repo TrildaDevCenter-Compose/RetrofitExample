@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UserRepositoryImpl: UserRepository {
 
-    private val BASE_URL = "https://jsonplaceholder.org/user"
+    private val BASE_URL = "https://jsonplaceholder.org/users/"
 
     private val userApi: UserApi
 

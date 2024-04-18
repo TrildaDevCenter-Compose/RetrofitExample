@@ -2,20 +2,32 @@ package com.lj.app.show
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.lj.app.MainViewModel
 import com.lj.app.common.SearchFieldComposable
 
 @Composable
-fun SearchCountriesComposable(viewModel: MainViewModel) {
+fun SearchCountriesComposable() {
 
+    val viewModel = hiltViewModel<MainViewModel>()
     var searchText by remember { mutableStateOf("") }
-    val items = viewModel.countries
+
 
     Column {
+//        Column {
+//            SearchFieldComposable(searchText, onSearchTextChange = { newText ->
+//                searchText = newText
+//                viewModel.searchCountries(searchText)
+//            })
+//            CountryList(countries = viewModel.countries)
+//        }
+
+        Column {
             SearchFieldComposable(searchText, onSearchTextChange = { newText ->
                 searchText = newText
-                viewModel.searchCountries(searchText)
+                viewModel.getPosts()
             })
-            CountryList(countries = items)
+            PostList(posts = viewModel.posts)
+        }
     }
 }
