@@ -27,7 +27,6 @@ class MainViewModel @Inject constructor(
     ) : ViewModel() {
 
     private var _countries by mutableStateOf(emptyList<Country>())
-
     val countries: List<Country>
         get() = _countries
 
@@ -37,8 +36,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private var _users by mutableStateOf(emptyList<User>())
 
+    private var _users by mutableStateOf(emptyList<User>())
     val users: List<User>
         get() = _users
 
@@ -48,8 +47,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private var _posts by mutableStateOf(emptyList<Post>())
 
+    private var _posts by mutableStateOf(emptyList<Post>())
     val posts: List<Post>
         get() = _posts
 
@@ -58,8 +57,9 @@ class MainViewModel @Inject constructor(
             _posts = postRepo.getPosts()
         }
     }
-    private var _comments by mutableStateOf(emptyList<Comment>())
 
+
+    private var _comments by mutableStateOf(emptyList<Comment>())
     val comments: List<Comment>
         get() = _comments
 
