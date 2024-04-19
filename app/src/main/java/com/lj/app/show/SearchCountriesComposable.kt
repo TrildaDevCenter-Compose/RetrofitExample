@@ -26,6 +26,10 @@ fun SearchCountriesComposable() {
             SearchFieldComposable(searchText, onSearchTextChange = { newText ->
                 searchText = newText
                 viewModel.getPosts()
+                viewModel.getComments()
+                viewModel.getUsers()
+
+
             })
             PostList(posts = viewModel.posts)
         }

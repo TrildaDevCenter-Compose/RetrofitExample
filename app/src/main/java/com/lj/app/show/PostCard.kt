@@ -1,5 +1,6 @@
 package com.lj.app.show
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -9,12 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.lj.domain.model.Post
 
 @Composable
@@ -58,4 +64,16 @@ fun PostCard(item: Post) {
             }
         }
     }
+}
+
+
+@Preview("default")
+@Preview(device = Devices.PHONE)
+@Preview(device = Devices.FOLDABLE)
+@Preview(device = Devices.TABLET)
+@Preview(device = Devices.DESKTOP)
+@Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun  PostCardPreview() {
+    PostCard(item = Post())
 }

@@ -42,7 +42,7 @@ class MainViewModel @Inject constructor(
     val users: List<User>
         get() = _users
 
-    fun getUsers(query: String) {
+    fun getUsers() {
         viewModelScope.launch {
             _users = userRepo.getUsers()
         }

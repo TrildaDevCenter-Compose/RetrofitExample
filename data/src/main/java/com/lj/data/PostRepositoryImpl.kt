@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PostRepositoryImpl: PostRepository {
 
-    private val BASE_URL = "https://jsonplaceholder.org/posts/"
+    private val BASE_URL = "https://jsonplaceholder.org/"
 
     private val postApi: PostApi
 

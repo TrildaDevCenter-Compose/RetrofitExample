@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CommentRepositoryImpl: CommentRepository {
 
-    private val BASE_URL = "https://jsonplaceholder.org/comments/"
+    private val BASE_URL = "https://jsonplaceholder.org/"
 
     private val commentApi: CommentApi
 
