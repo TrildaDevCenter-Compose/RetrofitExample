@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lj.domain.CommentRepository
-import com.lj.domain.CountryRepository
+import com.lj.domain.CountryService
 import com.lj.domain.PostRepository
 import com.lj.domain.UserRepository
 import com.lj.domain.model.Comment
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val countryRepo: CountryRepository,
+    private val countryRepo: CountryService,
     private val userRepo: UserRepository,
     private val postRepo: PostRepository,
     private val commentRepo: CommentRepository,

@@ -6,7 +6,7 @@ import com.lj.app.MainViewModel
 import com.lj.app.common.SearchFieldComposable
 
 @Composable
-fun SearchCountriesComposable(viewModel: MainViewModel) {
+fun SearchCountriesScreen(viewModel: MainViewModel) {
 
     var searchText by remember { mutableStateOf("") }
     val items = viewModel.countries

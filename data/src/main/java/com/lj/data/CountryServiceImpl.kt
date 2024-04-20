@@ -1,6 +1,6 @@
 package com.lj.data
 
-import com.lj.domain.CountryRepository
+import com.lj.domain.CountryService
 import com.lj.domain.model.Country
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,11 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 
-class CountryRepositoryImpl: CountryRepository {
+class CountryServiceImpl: CountryService {
 
     private val BASE_URL = "https://restcountries.com/v3.1/"
 
-    private val countryApi: CountryApi
+    private val countryApiService: CountryApiService
 
     init {
         val mHttpLoggingInterceptor = HttpLoggingInterceptor()
@@ -29,12 +29,12 @@ class CountryRepositoryImpl: CountryRepository {
             .client(mOkHttpClient)
             .build()
 
-        countryApi = retrofit.create(CountryApi::class.java)
+        countryApiService = retrofit.create(CountryApiService::class.java)
     }
 
     override suspend fun searchCountries(query: String): List<Country> {
         return try {
-            val response = countryApi.searchCountries(query).awaitResponse()
+            val response = countryApiService.searchCountries(query).awaitResponse()
             if (response.isSuccessful) {
                 val countries = response.body() ?: emptyList()
                 countries.map { it.toModel() }

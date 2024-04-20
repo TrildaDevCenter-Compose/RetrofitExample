@@ -1,9 +1,7 @@
 package com.lj.data
 
 import com.lj.domain.CommentRepository
-import com.lj.domain.CountryRepository
 import com.lj.domain.model.Comment
-import com.lj.domain.model.Country
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

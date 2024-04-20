@@ -1,11 +1,11 @@
 package com.lj.data.di
 
 import com.lj.data.CommentRepositoryImpl
-import com.lj.data.CountryRepositoryImpl
+import com.lj.data.CountryServiceImpl
 import com.lj.data.PostRepositoryImpl
 import com.lj.data.UserRepositoryImpl
 import com.lj.domain.CommentRepository
-import com.lj.domain.CountryRepository
+import com.lj.domain.CountryService
 import com.lj.domain.PostRepository
 import com.lj.domain.UserRepository
 import dagger.Module
@@ -21,8 +21,8 @@ import dagger.hilt.components.SingletonComponent
 object Module {
 
     @Provides
-    fun provideCountryRepository(): CountryRepository {
-        return CountryRepositoryImpl()
+    fun provideCountryRepository(): CountryService {
+        return CountryServiceImpl()
     }
 
     @Provides
