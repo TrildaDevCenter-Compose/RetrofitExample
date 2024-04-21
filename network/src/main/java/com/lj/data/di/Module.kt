@@ -2,7 +2,7 @@ package com.lj.data.di
 
 import com.lj.data.CommentRepositoryImpl
 import com.lj.data.CountryServiceImpl
-import com.lj.data.PostRepositoryImpl
+import com.lj.data.PostServiceImpl
 import com.lj.data.UserRepositoryImpl
 import com.lj.domain.CommentRepository
 import com.lj.domain.CountryService
@@ -32,7 +32,7 @@ object Module {
 
     @Provides
     fun providePostRepository(): PostRepository {
-        return PostRepositoryImpl()
+        return PostServiceImpl()
     }
 
     @Provides

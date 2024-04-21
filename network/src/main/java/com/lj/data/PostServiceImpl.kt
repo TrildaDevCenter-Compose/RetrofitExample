@@ -8,11 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 
-class PostRepositoryImpl: PostRepository {
+class PostServiceImpl: PostRepository {
 
     private val BASE_URL = "https://jsonplaceholder.org"
 
-    private val postApi: PostApi
+    private val postApiService: PostApiService
 
     init {
         val mHttpLoggingInterceptor = HttpLoggingInterceptor()
@@ -29,12 +29,12 @@ class PostRepositoryImpl: PostRepository {
             .client(mOkHttpClient)
             .build()
 
-        postApi = retrofit.create(PostApi::class.java)
+        postApiService = retrofit.create(PostApiService::class.java)
     }
 
     override suspend fun getPosts(): List<Post> {
         return try {
-            val response = postApi.getPosts().awaitResponse()
+            val response = postApiService.getPosts().awaitResponse()
             if (response.isSuccessful) {
                 val posts = response.body() ?: emptyList()
                 posts.map { it.toModel() }

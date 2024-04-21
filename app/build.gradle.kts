@@ -89,8 +89,8 @@ dependencies {
 
     androidTestImplementation("androidx.work:work-testing:$workVersion")
     implementation ("androidx.work:work-multiprocess:$workVersion")
+    implementation(project(":network"))
 
-    implementation (project(":data"))
     implementation (project(":domain"))
 
     implementation ("androidx.core:core-ktx:1.12.0")
